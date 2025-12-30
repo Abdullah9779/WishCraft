@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Permissions-Policy" content="unload=*">
+    {# SEO block for title/meta tags #}
+    {% block seo %}
+    {% block title %}
+    <title>WishCraft — Free Online Card Maker for Personalized Wishes & Birthday Cards</title>
+    {% endblock %}
+    {% block meta_description %}
+    <meta name="description" content="WishCraft — free online card maker to create personalized birthday and greeting cards with ready-made templates, images, and music.">
+    {% endblock %}
+    <link rel="canonical" href="{{ request.url }}">
+    <!-- Open Graph defaults -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="WishCraft — Free Online Card Maker for Personalized Wishes & Birthday Cards">
+    <meta property="og:description" content="Create personalized wish cards and birthday greetings in seconds with WishCraft's free templates and easy editor.">
+    <meta property="og:image" content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+    <meta property="og:url" content="{{ request.url }}">
+    <!-- Twitter defaults -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WishCraft — Free Online Card Maker">
+    <meta name="twitter:description" content="Create personalized wish cards and birthday greetings in seconds with WishCraft's free templates and easy editor.">
+    <meta name="twitter:image" content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+    {% endblock %}
+
+    {# CSS block - include Tailwind by default, allow pages to add extra CSS #}
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block css %}{% endblock %}
+    <link rel="icon" href="https://dotcoder.site/static/wishcraft/icon/wishcraft-favicon.png">
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'home_page' %}" class="flex items-center space-x-3">
+                        <span class="text-xl font-bold text-gray-800">WishCraft</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="{% url 'home_page' %}" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="{% url 'my_templates_page' %}" class="text-gray-700 hover:text-blue-600 font-medium">My Templates</a>
+                    <a href="{% url 'about_page' %}" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="{% url 'contact_page' %}" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <a href="{% url 'blog_page' %}" class="text-gray-700 hover:text-blue-600 font-medium py-2">Blog</a>
+                </nav>
+                <div class="flex items-center">
+                    <button id="mobile-menu-button"
+                        aria-label="Toggle navigation"
+                        aria-expanded="false"
+                        class="md:hidden p-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden py-4 border-t border-gray-200">
+                <div class="flex flex-col space-y-3">
+                    <a href="{% url 'home_page' %}" class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
+                    <a href="{% url 'my_templates_page' %}" class="text-gray-700 hover:text-blue-600 font-medium py-2">My Templates</a>
+                    <a href="{% url 'about_page' %}" class="text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
+                    <a href="{% url 'contact_page' %}" class="text-gray-700 hover:text-blue-600 font-medium py-2">Contact</a>
+                    <a href="{% url 'blog_page' %}" class="text-gray-700 hover:text-blue-600 font-medium py-2">Blog</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {# Main body content for pages #}
+    <main class="flex-grow">
+        {% block content %}
+            {% block body %}{% endblock %}
+        {% endblock %}
+    </main>
+
+    {# Default footer kept here; pages can override via body if needed #}
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info (text logo only) -->
+                <div class="col-span-1 md:col-span-2">
+                    <a href="{% url 'home_page' %}" class="flex items-center mb-4">
+                        <span
+                            class="text-2xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">WishCraft</span>
+                    </a>
+                    <p class="text-gray-600 max-w-md">
+                        Create personalized wish cards and birthday greetings in seconds. WishCraft offers beautiful templates and a simple editor so you can craft heartfelt messages and share them instantly.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'home_page' %}" class="text-gray-600 hover:text-pink-500">Home</a></li>
+                        <li><a href="{% url 'about_page' %}" class="text-gray-600 hover:text-pink-500">About Us</a></li>
+                        <li><a href="{% url 'contact_page' %}" class="text-gray-600 hover:text-pink-500">Contact</a></li>
+                        <li><a href="{% url 'privacy_page' %}" class="text-gray-600 hover:text-pink-500">Privacy Policy</a></li>
+                        <li><a href="{% url 'blog_page' %}" class="text-gray-600 hover:text-pink-500">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'my_templates_page' %}" class="text-gray-600 hover:text-pink-500">My Templates</a></li>
+                        <li><a href="{% url 'install_page' %}" class="text-gray-600 hover:text-pink-500">Install</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">
+                    © {% now "Y" %} WishCraft. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    {# JS block - scripts at end of body #}
+    {% block js %}{% endblock %}
+    {# CSRF helper (adds X-CSRFToken automatically to fetch and jQuery) #}
+    <script src="{% static 'js/csrf.js' %}"></script>
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js?v=2')
+                    .then(registration => {
+                        console.log('SW registered');
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content available, refresh page
+                                    window.location.reload();
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        // Guard in case elements are not present to avoid runtime errors
+        if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function () {
+                    const isHidden = mobileMenu.classList.toggle('hidden');
+                    // set aria-expanded to true when menu is visible
+                    mobileMenuButton.setAttribute('aria-expanded', (!isHidden).toString());
+                });
+            }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+
+{% block seo %}
+<!-- Primary Meta Tags -->
+<title>WishCraft Blog — Birthday Card Ideas, Design Tips & Personalization Guides</title>
+<meta name="title" content="WishCraft Blog — Birthday Card Ideas, Design Tips & Personalization Guides">
+<meta name="description"
+    content="Explore WishCraft's blog for birthday card ideas, design tips, and personalization techniques. Learn how to make memorable greeting cards using professional templates and simple tools.">
+<meta name="keywords"
+    content="birthday card ideas, card design tips, personalization, greeting card inspiration, template guides">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="author" content="WishCraft">
+<link rel="canonical" href="{{ request.url }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.url }}">
+<meta property="og:title" content="Birthday Card Ideas & Tips Blog | WishCraft">
+<meta property="og:description"
+    content="Discover creative birthday card ideas, design tips, and personalization techniques. Learn how to create memorable greeting cards with our expert guides.">
+<meta property="og:image"
+    content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+<meta property="og:site_name" content="WishCraft">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ request.url }}">
+<meta property="twitter:title" content="Birthday Card Ideas & Tips Blog | WishCraft">
+<meta property="twitter:description"
+    content="Discover creative birthday card ideas, design tips, and personalization techniques. Learn how to create memorable greeting cards.">
+<meta property="twitter:image"
+    content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "WishCraft Blog",
+  "description": "Creative birthday card ideas, design tips, and personalization techniques for making memorable greeting cards.",
+  "url": "{{ request.url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "WishCraft",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abdullahtariq.pythonanywhere.com/static/logo/wishcraft_logo_1.png"
+    }
+  }
+}
+</script>
+{% endblock %}
+
+{% block css %}
+<style>
+    .blog-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .blog-card:hover {
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-pink-50 to-blue-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
+                Birthday Card Ideas & Design Tips — WishCraft Blog 📝
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Find practical advice and creative ideas for designing personalized birthday and greeting cards. Use our step-by-step tips to make cards that feel thoughtful and memorable.
+            </p>
+        </div>
+    </section>
+
+    <!-- Advertisement -->
+    <section class="py-8 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="flex justify-center">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="space-y-8">
+                <!-- Post 1 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center mb-4">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">Personalization</span>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-sm text-gray-500">5 min read</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">The Art of Personalization: Making Birthday Cards That Matter</h2>
+                        <p class="text-gray-600 mb-6">Learn how to create meaningful birthday cards that go beyond generic messages. Discover personalization techniques that make your greeting cards truly special.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Personal Memories</h3>
+                                <p class="text-gray-600">Reference specific memories, inside jokes, or achievements that show you truly know and care about them.</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Emotional Connection</h3>
+                                <p class="text-gray-600">Cards that evoke positive emotions through humor, nostalgia, or inspiration are treasured forever.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Advertisement -->
+                <section class="py-8">
+                    <div class="flex justify-center">
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                                'format': 'iframe',
+                                'height': 90,
+                                'width': 728,
+                                'params': {}
+                            };
+                        </script>
+                        <script type="text/javascript"
+                            src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+                    </div>
+                </section>
+
+                <!-- Post 2 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Design Tips</span>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-sm text-gray-500">6 min read</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Digital vs. Physical Birthday Cards: Finding the Right Balance</h2>
+                        <p class="text-gray-600 mb-6">Explore the benefits of both digital and physical birthday cards and learn when to use each format for maximum impact.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">📱 Digital Cards</h3>
+                                <p class="text-gray-600">Instant delivery, multimedia elements, environmentally friendly, and easy social sharing.</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">📮 Physical Cards</h3>
+                                <p class="text-gray-600">Tangible keepsakes, personal touch, display value, and traditional sentimental appeal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Advertisement -->
+                <section class="py-8">
+                    <div class="flex justify-center">
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                                'format': 'iframe',
+                                'height': 90,
+                                'width': 728,
+                                'params': {}
+                            };
+                        </script>
+                        <script type="text/javascript"
+                            src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+                    </div>
+                </section>
+
+                <!-- Post 3 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center mb-4">
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Templates</span>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-sm text-gray-500">8 min read</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Choose the Perfect Template for Every Personality</h2>
+                        <p class="text-gray-600 mb-6">Matching your card design to the recipient's personality ensures your birthday wishes hit the right note every time.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">🎉 Fun-Loving Friend</h3>
+                                <p class="text-gray-600">Bright colors, playful elements, balloons, confetti, and bold fonts.</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">✨ Elegant Individual</h3>
+                                <p class="text-gray-600">Sophisticated designs, clean lines, muted colors, and classic patterns.</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">💝 Sentimental Soul</h3>
+                                <p class="text-gray-600">Personal photos, heartfelt messages, and vintage-inspired designs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-pink-50 to-blue-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Create Your Card?</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Try the tips in our articles with WishCraft's free editor — browse templates and personalize a card in minutes.
+            </p>
+            <a href="{% url 'home_page' %}"
+                class="inline-block px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-lg hover:from-pink-600 hover:to-purple-600 transition-all transform hover:scale-105">
+                Browse Templates
+            </a>
+        </div>
+    </section>
+
+    <!-- Final Advertisement -->
+    <section class="py-8 px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+        </div>
+    </section>
+</main>
+{% endblock %}

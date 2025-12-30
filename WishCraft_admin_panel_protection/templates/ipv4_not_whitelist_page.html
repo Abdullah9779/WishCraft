@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #eef1f7, #dce1eb);
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 90%;
+            max-width: 520px;
+            padding: 35px 40px;
+            border-radius: 18px;
+            box-shadow: 0 6px 35px rgba(0,0,0,0.12);
+            border: 1px solid #e4e7ee;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 65px;
+            color: #e03030;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #d32f2f;
+        }
+
+        p {
+            margin: 15px 0 25px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .details {
+            text-align: left;
+            background: #f8f9fb;
+            padding: 18px 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e6ee;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .details strong {
+            color: #222;
+        }
+
+        .details .item {
+            margin-bottom: 10px;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .help-box {
+            background: #fff7f7;
+            padding: 18px 20px;
+            border-left: 4px solid #d32f2f;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon">🚫</div>
+
+        <h2>Access Denied</h2>
+
+        <p>Your IP address is not authorized to access this admin panel.</p>
+
+        <div class="details">
+            <div class="item"><strong>Full Name:</strong> {{ full_name }}</div>
+            <div class="item"><strong>Username:</strong> {{ username }}</div>
+            <div class="item"><strong>Whitelisted IPv4:</strong> {{ registered_ipv4_address }}</div>
+            <div class="item"><strong>Current IPv4:</strong> {{ ipv4_address }}</div>
+        </div>
+
+        <div class="footer-note">
+            Unauthorized access attempts are logged automatically.
+        </div>
+
+        <div class="help-box">
+            <strong>How to Fix This:</strong><br><br>
+            • Disable VPN or proxy — they change your IP. <br>
+            • Use the same Wi-Fi/router that is registered. <br>
+            • Avoid switching networks after login. <br>
+            • Restart your router if your external IP changed. <br>
+            • If your IP has genuinely changed, contact the admin to update the whitelist. <br>
+            • Mobile data (4G/5G) will not work unless explicitly whitelisted.
+        </div>
+    </div>
+
+</body>
+</html>

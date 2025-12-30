@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block seo %}
+<title>Install WishCraft — Add the Free Card Maker to Your Home Screen</title>
+<meta name="description" content="Install WishCraft on your device for faster access to create personalized birthday and greeting cards. Enjoy a native-like experience and offline access with the PWA.">
+<meta name="keywords" content="wishcraft, install WishCraft, PWA, add to home screen, card maker app, progressive web app, offline cards">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{% url 'install_page' %}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{% url 'install_page' %}">
+<meta property="og:title" content="Install WishCraft App - Create Beautiful Wish Cards">
+<meta property="og:description" content="Install WishCraft as a mobile app for faster access to create personalized birthday cards and greeting cards. Get the full app experience with offline access.">
+<meta property="og:image" content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{% url 'install_page' %}">
+<meta property="twitter:title" content="Install WishCraft App - Create Beautiful Wish Cards">
+<meta property="twitter:description" content="Install WishCraft as a mobile app for faster access to create personalized birthday cards and greeting cards.">
+<meta property="twitter:image" content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="WishCraft">
+{% endblock %}
+
+{% block body %}
+<div class="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+            <div class="mb-8">
+                <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="text-3xl">📱</span>
+                </div>
+                <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+                    Install WishCraft — Add to Your Home Screen
+                </h1>
+                <p class="text-gray-600 text-lg mb-6">
+                    Get faster access to WishCraft with a native-like experience. Install the app for quick launches and optional offline capabilities.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Lightning-Fast Access</h3>
+                    <p class="text-sm text-gray-600">Open WishCraft instantly from your home screen for faster card creation.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Native-Like Experience</h3>
+                    <p class="text-sm text-gray-600">Enjoy a polished, app-like interface optimized for mobile use.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">🔒</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Secure & Private</h3>
+                    <p class="text-sm text-gray-600">Install safely — we follow standard web security practices to protect your data.</p>
+                </div>
+            </div>
+
+            <button id="installBtn"
+                    style="display:none;"
+                    class="mx-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl">
+                <span class="flex items-center justify-center gap-2">
+                    <span class="text-xl">📥</span>
+                    <span>Install WishCraft</span>
+                </span>
+            </button>
+
+            <div id="alreadyInstalled" style="display:none;" class="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+                <p class="text-green-700 font-medium">✅ WishCraft Professional App is already installed!</p>
+                <p class="text-green-600 text-sm mt-1">You can find it on your home screen or app drawer for instant access.</p>
+            </div>
+
+            <div id="notSupported" class="text-gray-500 text-sm mt-4">
+                    <p>💡 To install: Open this page in Chrome, Safari, or Edge and choose "Add to Home Screen" or the browser install option.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
+    const notSupported = document.getElementById("notSupported");
+    const alreadyInstalled = document.getElementById("alreadyInstalled");
+
+    // Check if app is already installed
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+        alreadyInstalled.style.display = "block";
+        notSupported.style.display = "none";
+    }
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtn.style.display = "block";
+        notSupported.style.display = "none";
+    });
+
+    installBtn.addEventListener("click", async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log("User response:", outcome);
+            deferredPrompt = null;
+            installBtn.style.display = "none";
+        }
+    });
+
+    window.addEventListener("appinstalled", () => {
+        console.log("WishCraft installed successfully!");
+        installBtn.style.display = "none";
+        alreadyInstalled.style.display = "block";
+        notSupported.style.display = "none";
+    });
+</script>
+{% endblock %}

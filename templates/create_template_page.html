@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+
+{% block seo %}
+<title>WishCraft — Create Personalized Birthday Template</title>
+<meta name="description" content="Design a personalized birthday template with WishCraft's simple editor — upload photos, add a message, choose music, and generate a shareable template ID.">
+<link rel="icon" href="https://dotcoder.site/static/wishcraft/icon/wishcraft-favicon.png">
+{% endblock %}
+
+{% block body %}
+
+<div class="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 py-8">
+    <section class="py-8 px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+        </div>
+    </section>
+    <div class="max-w-2xl mx-auto bg-white shadow-2xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-100 mx-4 sm:mx-auto">
+        <div class="text-center mb-8">
+            <div
+                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4">
+                <span class="text-2xl">🎂</span>
+            </div>
+            <h2
+                class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                Create a Personalized Birthday Template
+            </h2>
+            <p class="text-gray-600">Design a beautiful, shareable birthday card — a Template ID will be generated automatically after creation.</p>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white rounded-lg p-6 flex items-center space-x-3">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
+                <span class="text-gray-700 font-medium">Creating your template — this may take a moment...</span>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="success-message" class="hidden mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div class="flex items-center">
+                <span class="text-green-600 text-xl mr-2">✅</span>
+                <span class="text-green-800 font-medium">Template created successfully!</span>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message-global" class="hidden mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div class="flex items-center">
+                <span class="text-red-600 text-xl mr-2">❌</span>
+                <span class="text-red-800 font-medium" id="error-text">Something went wrong. Please try again.</span>
+            </div>
+        </div>
+
+        <form id="template-form">
+
+
+            <!-- Name -->
+            <div class="mb-6">
+                <label for="name" class="block text-gray-800 font-semibold mb-2 flex items-center">
+                    <span class="mr-2">👤</span>
+                    Birthday Person's Name
+                </label>
+                <input type="text" id="name" name="name" required placeholder="Enter the birthday person's name"
+                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none">
+            </div>
+
+            <!-- Birthday Date -->
+            <div class="mb-6">
+                <label for="date" class="block text-gray-800 font-semibold mb-2 flex items-center">
+                    <span class="mr-2">📅</span>
+                    Birthday Date
+                </label>
+                <input type="date" id="date" name="date" required
+                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none">
+            </div>
+
+            <!-- Wish Message -->
+            <div class="mb-6">
+                    <label for="wish" class="block text-gray-800 font-semibold mb-2 flex items-center">
+                    <span class="mr-2">💌</span>
+                    Birthday Message
+                </label>
+                <textarea id="wish" name="wish" rows="4" required placeholder="Write a heartfelt birthday message..."
+                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none resize-none"></textarea>
+                <p class="text-sm text-gray-500 mt-1">Tip: Include a personal memory or inside joke to make the card more meaningful.</p>
+            </div>
+
+            <!-- Upload Images -->
+            <div class="mb-6">
+                <label class="block text-gray-800 font-semibold mb-2 flex items-center">
+                    <span class="mr-2">📸</span>
+                    Upload Images
+                </label>
+                <div class="relative">
+                    <input type="file" id="images" name="images" accept="image/*" multiple required
+                        class="w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100">
+                </div>
+                <p class="text-sm text-gray-500 mt-1">Select several images to create a beautiful slideshow or collage for the card.</p>
+                <div id="image-preview" class="mt-3 grid grid-cols-3 gap-2 hidden"></div>
+            </div>
+
+            <!-- Select a Song -->
+            <div class="mb-6">
+                <label class="block text-gray-800 font-semibold mb-2 flex items-center">
+                    <span class="mr-2">🎵</span>
+                    Choose Background Music
+                </label>
+                <div class="song-dropdown relative">
+                    <div class="input-box flex items-center">
+                        <input type="text" id="songDisplay" placeholder="🎶 Search and select a birthday song..."
+                            class="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border-2 border-gray-200 rounded-l-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none">
+                        <input type="hidden" id="song" name="song" required>
+                        <button type="button" id="songToggleBtn" class="px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 border-l-0 bg-gray-50 rounded-r-xl hover:bg-gray-100 transition-all duration-200 font-bold text-sm sm:text-base">▼</button>
+                    </div>
+                    <div class="dropdown-content bg-white w-full max-h-40 sm:max-h-48 overflow-y-auto border border-gray-200 rounded-xl mt-1 hidden z-10 absolute shadow-lg">
+                        {% for song_key, song_data in songs %}
+                        <div class="p-2 sm:p-3 text-sm sm:text-base cursor-pointer hover:bg-gray-50 border-b border-gray-100 last:border-b-0" data-url="{{ song_data.song_url }}" data-title="{{ song_data.song_title }}">
+                            {{ song_data.song_title }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Song -->
+            <div class="mb-8">
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border">
+                    <span class="text-gray-700 font-medium">🎧 Song Preview</span>
+                        <button type="button" id="previewBtn" onclick="togglePlay()" disabled
+                        class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-all duration-200">
+                        Play Preview
+                    </button>
+                </div>
+                <audio id="audioPlayer" class="w-full mt-3 hidden"></audio>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-btn"
+                class="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 hover:from-purple-700 hover:via-pink-700 hover:to-purple-800 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2">
+                <span>🎉</span>
+                <span>Create Template</span>
+            </button>
+        </form>
+    </div>
+    <section class="py-8 px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+        </div>
+    </section>
+</div>
+
+<script>
+    // Song dropdown functionality
+    const songDisplay = document.getElementById("songDisplay");
+    const songInput = document.getElementById("song");
+    const dropdownContent = document.querySelector(".dropdown-content");
+    const songToggleBtn = document.getElementById("songToggleBtn");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const previewBtn = document.getElementById("previewBtn");
+
+    // Filter dropdown items based on search
+    function filterSongs(searchTerm) {
+        const items = dropdownContent.querySelectorAll("div");
+        let hasVisible = false;
+        items.forEach(item => {
+            const title = item.textContent.toLowerCase();
+            if (title.includes(searchTerm.toLowerCase())) {
+                item.style.display = "block";
+                hasVisible = true;
+            } else {
+                item.style.display = "none";
+            }
+        });
+        dropdownContent.style.display = hasVisible ? "block" : "none";
+    }
+
+    // Search input event
+    songDisplay.addEventListener("input", () => {
+        if (songDisplay.value.trim() === "") {
+            dropdownContent.style.display = "none";
+            songInput.value = "";
+        } else {
+            filterSongs(songDisplay.value);
+        }
+        updateSong();
+    });
+
+    // Toggle button click
+    songToggleBtn.addEventListener("click", () => {
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            filterSongs("");
+        }
+    });
+
+    // Click on dropdown item
+    dropdownContent.addEventListener("click", (e) => {
+        if (e.target.tagName === "DIV") {
+            songDisplay.value = e.target.dataset.title;
+            songInput.value = e.target.dataset.url;
+            dropdownContent.style.display = "none";
+            updateSong();
+        }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".song-dropdown")) {
+            dropdownContent.style.display = "none";
+        }
+    });
+
+    // Song preview functionality
+    function updateSong() {
+        if (songInput.value && songInput.value.startsWith('http')) {
+            audioPlayer.src = songInput.value;
+            previewBtn.disabled = false;
+            audioPlayer.classList.remove("hidden");
+        } else {
+            previewBtn.disabled = true;
+            audioPlayer.classList.add("hidden");
+        }
+    }
+
+    function togglePlay() {
+        const audioPlayer = document.getElementById("audioPlayer");
+        const previewBtn = document.getElementById("previewBtn");
+
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            previewBtn.innerHTML = "⏸️ Pause Preview";
+        } else {
+            audioPlayer.pause();
+            previewBtn.innerHTML = "▶️ Play Preview";
+        }
+    }
+
+    // Image preview functionality
+    document.getElementById("images").addEventListener("change", function (event) {
+        const files = event.target.files;
+        const previewContainer = document.getElementById("image-preview");
+
+        if (files.length > 0) {
+            previewContainer.innerHTML = "";
+            previewContainer.classList.remove("hidden");
+
+            Array.from(files).slice(0, 6).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.loading = "lazy";
+                    img.title = "Image preview";
+                    img.className = "w-full h-20 object-cover rounded-lg border-2 border-gray-200";
+                    previewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        } else {
+            previewContainer.classList.add("hidden");
+        }
+    });
+
+
+
+    // Form submission with API call
+    document.getElementById("template-form").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const submitBtn = document.getElementById("submit-btn");
+        const loading = document.getElementById("loading");
+        const successMessage = document.getElementById("success-message");
+        const errorMessageGlobal = document.getElementById("error-message-global");
+        const errorText = document.getElementById("error-text");
+
+
+
+        // Convert images to base64
+        const files = document.getElementById("images").files;
+        const images = [];
+
+        for (let file of files) {
+            const base64 = await new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.readAsDataURL(file);
+            });
+            images.push({
+                name: file.name,
+                data: base64
+            });
+        }
+
+        // Prepare JSON data
+        const jsonData = {
+            name: document.getElementById("name").value,
+            date: document.getElementById("date").value,
+            wish: document.getElementById("wish").value,
+            song: document.getElementById("song").value,
+            images: images,
+            template_id: {{ template_id }}
+        };
+
+        // Show loading state
+        loading.classList.remove("hidden");
+        submitBtn.disabled = true;
+        successMessage.classList.add("hidden");
+        errorMessageGlobal.classList.add("hidden");
+
+        try {
+            const csrfToken = window.getCSRFToken ? window.getCSRFToken() : '';
+            const response = await fetch("{% url 'create_template_api' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken
+                },
+                body: JSON.stringify(jsonData)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Success
+                successMessage.classList.remove("hidden");
+                form.reset();
+                document.getElementById("image-preview").classList.add("hidden");
+                document.getElementById("previewBtn").disabled = true;
+                document.getElementById("audioPlayer").classList.add("hidden");
+
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: "smooth" });
+
+                // Redirect to share page after success
+                setTimeout(() => {
+                    if (result.templateUrl) {
+                        window.location.href = result.templateUrl;
+                    }
+                }, 100);
+            } else {
+                // Error from server
+                errorText.textContent = result.message || "Failed to create template. Please try again.";
+                errorMessageGlobal.classList.remove("hidden");
+                errorMessageGlobal.scrollIntoView({ behavior: "smooth" });
+            }
+        } catch (error) {
+            // Network or other error
+            console.error("Error creating template:", error);
+            errorText.textContent = "Network error. Please check your connection and try again.";
+            errorMessageGlobal.classList.remove("hidden");
+            errorMessageGlobal.scrollIntoView({ behavior: "smooth" });
+        } finally {
+            // Hide loading state
+            loading.classList.add("hidden");
+            submitBtn.disabled = false;
+        }
+    });
+
+    // Auto-pause audio when user navigates away
+    window.addEventListener("beforeunload", function () {
+        const audioPlayer = document.getElementById("audioPlayer");
+        if (!audioPlayer.paused) {
+            audioPlayer.pause();
+        }
+    });
+</script>
+
+{% endblock %}

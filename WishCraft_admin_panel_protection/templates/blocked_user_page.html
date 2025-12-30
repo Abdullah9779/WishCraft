@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #f0f2f7, #dadfe8);
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 90%;
+            max-width: 520px;
+            padding: 35px 40px;
+            border-radius: 18px;
+            box-shadow: 0 6px 35px rgba(0,0,0,0.12);
+            border: 1px solid #e4e7ee;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 65px;
+            color: #d90000;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #c40000;
+        }
+
+        p {
+            margin: 15px 0 25px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .details-box {
+            text-align: left;
+            background: #f8f9fb;
+            padding: 18px 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e6ee;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .details-box strong {
+            color: #222;
+        }
+
+        .warning-box {
+            background: #fff3f3;
+            padding: 18px 20px;
+            border-left: 4px solid #d90000;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #444;
+            text-align: left;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon">⛔</div>
+
+        <h2>Access Denied</h2>
+
+        <p>You are blocked by the admin. Your access to this panel has been revoked.</p>
+
+        <div class="details-box">
+            <strong>Additional Information:</strong><br><br>
+            <strong>Full Name:</strong> {{ full_name }}<br>
+            <strong>Username:</strong> {{ username }}<br>
+            <strong>Registered IPv4:</strong> {{ registered_ipv4_address }}<br>
+            <strong>Current IPv4:</strong> {{ ipv4_address }}
+        </div>
+
+        <div class="warning-box">
+            <strong>Why You See This:</strong><br><br>
+            • Your IP or device has been blocked for security reasons. <br>
+            • You may have violated access rules or triggered a security filter. <br>
+            • If you believe this is a mistake, contact the administrator.
+        </div>
+    </div>
+
+</body>
+</html>

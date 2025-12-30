@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+
+{% block seo %}
+<title>My Templates - WishCraft</title>
+<meta name="description" content="Manage your saved WishCraft templates. View, share, download, or delete your personalized wish cards.">
+<link rel="canonical" href="{{ request.url }}">
+<meta property="og:title" content="My Templates — WishCraft">
+<meta property="og:description" content="Manage and share your saved personalized wish card templates on WishCraft.">
+<meta property="og:image" content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
+{% block css %}
+<style>
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-5px);
+    }
+
+    .delete-btn {
+        transition: all 0.3s ease;
+    }
+
+    .delete-btn:hover {
+        transform: scale(1.05);
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<!-- Header Section -->
+<section class="bg-gradient-to-r from-pink-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">
+            My Templates 📋
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Manage your saved templates — view, share, download, or delete personalized wish cards quickly and securely.
+        </p>
+    </div>
+</section>
+
+<section class="py-8 px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-center">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript"
+            src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+    </div>
+</section>
+
+<!-- Templates Section -->
+<section class="py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        {% if templates %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for code, template in templates %}
+            <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden flex flex-col template-card"
+                data-template-code="{{ code }}">
+                <div class="relative h-48 overflow-hidden bg-gradient-to-br from-pink-100 to-purple-100">
+                    {% if template.template_data and template.template_data.first_image %}
+                    <img src="{{ template.template_data.first_image }}" alt="{{ template.template_data.name|default:'Template' }} preview image" title="{{ template.template_data.name|default:'Template preview' }}" loading="lazy"
+                        class="w-full h-full object-cover">
+                    {% else %}
+                    <div class="w-full h-full flex items-center justify-center">
+                        <svg class="w-16 h-16 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    {% endif %}
+                    <div class="absolute top-3 right-3">
+                        <span class="px-2 py-1 bg-green-500 text-white text-xs font-medium rounded-full">Created</span>
+                    </div>
+                </div>
+
+                <div class="p-4 flex-grow">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                        {% if template.template_data.name %}{{ template.template_data.name }}{% else %}Template{% endif %}
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-2">Date: 
+                        {% if template.template_data.date %}{{ template.template_data.date }}{% else %}N/A{% endif %}
+                    </p>
+                    <p class="text-gray-500 text-xs mb-1">Template: 
+                        {% if template.template_data.template_id %}{{ template.template_data.template_id }}{% else %}N/A{% endif %}
+                    </p>
+                    <p class="text-gray-500 text-xs">Code: {{ code }}</p>
+                </div>
+
+                <div class="px-4 pb-4 space-y-2">
+                    <a href="{{ template.template_url }}" target="_blank" rel="noopener noreferrer"
+                        class="w-full py-2 text-sm bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg font-medium hover:from-pink-600 hover:to-purple-600 transition-colors flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                        View Template
+                    </a>
+                    <button onclick="copyUrl('{{ template.template_url }}')"
+                        class="w-full py-2 text-sm bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        Copy URL
+                    </button>
+                    <button onclick="deleteTemplate('{{ code }}')"
+                        class="delete-btn w-full py-2 text-sm bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 transition-colors flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                            </path>
+                        </svg>
+                        Delete
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-16">
+            <div class="bg-gray-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                    </path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">No Templates Yet</h3>
+            <p class="text-gray-600 mb-6">You haven't saved any templates. Create your first personalized wish card to get started.</p>
+            <a href="{% url 'home_page' %}"
+                class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg font-medium hover:from-pink-600 hover:to-purple-600 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Create Template
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    <section class="py-8 px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+        </div>
+    </section>
+</section>
+{% endblock %}
+
+{% block js %}
+<script>
+    function copyUrl(url) {
+        navigator.clipboard.writeText(url).then(() => {
+            alert('URL copied to clipboard!');
+        }).catch(() => {
+            const textArea = document.createElement('textarea');
+            textArea.value = url;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('URL copied to clipboard!');
+        });
+    }
+
+    function deleteTemplate(templateCode) {
+        if (!confirm('Are you sure you want to delete this template? This action cannot be undone.')) {
+            return;
+        }
+
+    const csrfToken = window.getCSRFToken ? window.getCSRFToken() : '';
+    fetch('{% url 'delete_template_api' %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({
+                template_code: templateCode
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Error: ' + data.error);
+                } else {
+                    const templateCard = document.querySelector(`[data-template-code="${templateCode}"]`);
+                    if (templateCard) {
+                        templateCard.remove();
+                    }
+
+                    const remainingCards = document.querySelectorAll('.template-card');
+                    if (remainingCards.length === 0) {
+                        location.reload();
+                    }
+
+                    alert('Template deleted successfully!');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while deleting the template.');
+            });
+    }
+</script>
+{% endblock %}

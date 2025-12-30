@@ -1,0 +1,28 @@
+{
+    "templates": [
+        {
+            "id": 1,
+            "name": "Birthday Countdown Card",
+            "desc": "A stylish and classy template.",
+            "image": "https://dotcoder.site/static/wishcraft/templates/template-1-pictures/template-1-0.png"
+        },
+        {
+            "id": 2,
+            "name": "Birthday Countdown Card",
+            "desc": "Elegant Text Template.",
+            "image": "https://dotcoder.site/static/wishcraft/templates/template-2-pictures/template-2-0.png"
+        },
+        {
+            "id": 3,
+            "name": "Birthday Countdown Card",
+            "desc": "Light Color Template.",
+            "image": "https://dotcoder.site/static/wishcraft/templates/template-3-pictures/template-3-0.png"
+        },
+        {
+            "id": 4,
+            "name": "Letter Card",
+            "desc": "Lovely Red Template.",
+            "image": "https://dotcoder.site/static/wishcraft/templates/template-4-pictures/template-4-0.png"
+        }
+    ]
+}

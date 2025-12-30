@@ -1,0 +1,11 @@
+# WishCraft robots.txt file
+# URL: https://wishcraft.pythonanywhere.com/
+
+User-agent: *
+Disallow: /static/
+Disallow: /media/
+Disallow: /api/
+
+Allow:/
+
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml

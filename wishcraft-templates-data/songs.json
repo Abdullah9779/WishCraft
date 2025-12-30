@@ -1,0 +1,104 @@
+{
+    "songs": {
+        "song_1": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/happy-birthday-song-0.mp3",
+            "song_title": "🎵 Tara Happy Birthday Ta (Punjabi)"
+        },
+        "song_2": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/happy-birthday-song-1.mp3",
+            "song_title": "🎵 Happy Birthday to You (Classic)"
+        },
+        "song_3": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/happy-birthday-song-2.mp3",
+            "song_title": "🎵 Tara Happy Birthday Ta (Punjabi)"
+        },
+        "song_4": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/happy-birthday-song-3.mp3",
+            "song_title": "🎵 Happy Birthday To You Ji (Fun)"
+        },
+        "song_5": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/happy-birthday-song-4.mp3",
+            "song_title": "🎵 Sal Bhar Me Sabse Pyara (Hindi)"
+        },
+        "song_6": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/love.mp3",
+            "song_title": "🎵 Love (Romantic Piano)"
+        },
+        "song_7": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/you-and-me.mp3",
+            "song_title": "🎵 You And Me (Romantic Wedding)"
+        },
+        "song_8": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/forever.mp3",
+            "song_title": "🎵 Forever (Romantic Piano & Strings)"
+        },
+        "song_9": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/a-day-to-remember.mp3",
+            "song_title": "🎵 A Day To Remember (Wedding Music)"
+        },
+        "song_10": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/tenderness.mp3",
+            "song_title": "🎵 Tenderness (Gentle Acoustic)"
+        },
+        "song_11": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/sweet.mp3",
+            "song_title": "🎵 Sweet (Romantic Guitar)"
+        },
+        "song_12": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/romantic.mp3",
+            "song_title": "🎵 Romantic (Beautiful Strings)"
+        },
+        "song_13": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/acoustic-breeze.mp3",
+            "song_title": "🎵 Acoustic Breeze (Soft Guitar)"
+        },
+        "song_14": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/sunny.mp3",
+            "song_title": "🎵 Sunny (Happy Acoustic)"
+        },
+        "song_15": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/smile.mp3",
+            "song_title": "🎵 Smile (Cheerful Acoustic)"
+        },
+        "song_16": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/memories.mp3",
+            "song_title": "🎵 Memories (Romantic Ballad)"
+        },
+        "song_17": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/little-idea.mp3",
+            "song_title": "🎵 Little Idea (Playful Love Song)"
+        },
+        "song_18": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/tomorrow.mp3",
+            "song_title": "🎵 Tomorrow (Hopeful Romantic)"
+        },
+        "song_19": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/once-again.mp3",
+            "song_title": "🎵 Once Again (Romantic Piano)"
+        },
+        "song_20": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/happiness.mp3",
+            "song_title": "🎵 Happiness (Uplifting Acoustic)"
+        },
+        "song_21": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/dreams.mp3",
+            "song_title": "🎵 Dreams (Peaceful Piano)"
+        },
+        "song_22": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/buddy.mp3",
+            "song_title": "🎵 Buddy (Friendly Acoustic)"
+        },
+        "song_23": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/cute.mp3",
+            "song_title": "🎵 Cute (Lovely Piano)"
+        },
+        "song_24": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/jazzy-frenchy.mp3",
+            "song_title": "🎵 Jazzy Frenchy (Romantic Jazz)"
+        },
+        "song_25": {
+            "song_url": "https://dotcoder.site/static/wishcraft/songs/going-higher.mp3",
+            "song_title": "🎵 Going Higher (Romantic Energy)"
+        }
+    }
+}

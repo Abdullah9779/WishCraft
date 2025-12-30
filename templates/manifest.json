@@ -1,0 +1,22 @@
+{
+  "name": "WishCraft",
+  "short_name": "WishCraft",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "Create and share birthday wishes easily.",
+  "version": "10",
+  "icons": [
+    {
+      "src": "https://dotcoder.site/static/wishcraft/icon/wishcraft-favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

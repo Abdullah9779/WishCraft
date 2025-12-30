@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+
+{% block seo %}
+<!-- Primary Meta Tags -->
+<title>WishCraft — Free Online Card Maker for Personalized Birthday Wishes & Greeting Cards</title>
+<meta name="title" content="WishCraft | Free Online Card Maker for Personalized Birthday Wishes & Greeting Cards">
+<meta name="description"
+    content="Create personalized birthday cards and greeting cards with WishCraft's free online card maker. Choose professional templates, customize text, images and music, and share instantly.">
+<meta name="keywords"
+    content="wishcraft, free online card maker, birthday cards, greeting cards, personalized cards, card templates, customize cards, digital greeting cards">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="author" content="WishCraft">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="{{ request.url }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.url }}">
+<meta property="og:title" content="WishCraft - Create Beautiful Wish Cards Online Free">
+<meta property="og:description"
+    content="Create stunning personalized wish cards and birthday greetings in seconds. Choose from beautiful templates, customize with ease, and share instantly.">
+<meta property="og:image"
+    content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+<meta property="og:site_name" content="WishCraft">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ request.url }}">
+<meta property="twitter:title" content="WishCraft - Create Beautiful Wish Cards Online Free">
+<meta property="twitter:description"
+    content="Create stunning personalized wish cards and birthday greetings in seconds. Choose from beautiful templates, customize with ease, and share instantly.">
+<meta property="twitter:image"
+    content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+
+<!-- Favicon -->
+<link rel="icon"
+    href="https://dotcoder.site/static/wishcraft/icon/wishcraft-favicon.png">
+<link rel="apple-touch-icon"
+    href="https://dotcoder.site/static/wishcraft/icon/wishcraft-192-logo.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "WishCraft",
+  "description": "Create personalized wish cards, birthday greetings, and digital celebration templates instantly. Choose, customize, and share with no signup.",
+  "url": "{{ request.url }}",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "WishCraft",
+    "url": "https://wishcraft.pythonanywhere.com/"
+  },
+  "featureList": [
+    "Online card creator",
+    "Template-based designs",
+    "Quick customization",
+    "Instant download & sharing",
+    "Free to use"
+  ],
+
+  "hasPart": [
+    {
+      "@type": "WebPage",
+      "name": "My Templates",
+      "url": "https://wishcraft.pythonanywhere.com/my-templates/",
+      "description": "Manage and access all your saved and customized wish card templates."
+    },
+    {
+      "@type": "WebPage",
+      "name": "About",
+      "url": "https://wishcraft.pythonanywhere.com/about/",
+      "description": "Learn about WishCraft, its purpose, and how it helps users create personalized greetings."
+    },
+    {
+      "@type": "WebPage",
+      "name": "Blog",
+      "url": "https://wishcraft.pythonanywhere.com/blog/",
+      "description": "Read guides, tips, and articles about designing better wish cards and digital greetings."
+    },
+    {
+      "@type": "WebPage",
+      "name": "Install",
+      "url": "https://wishcraft.pythonanywhere.com/install/",
+      "description": "Instructions on how to install WishCraft as a PWA for quick access on any device."
+    },
+    {
+      "@type": "WebPage",
+      "name": "Privacy Policy",
+      "url": "https://wishcraft.pythonanywhere.com/privacy/",
+      "description": "Read the Privacy Policy explaining how WishCraft collects, uses, and protects user data."
+    }
+
+  ]
+}
+</script>
+{% endblock %}
+
+{% block css %}
+<style>
+    /* Card hover effects */
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-5px);
+    }
+</style>
+{% endblock %}
+
+{# Use default header from base; override only if needed #}
+
+{% block body %}
+<!-- Main Content -->
+<main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-pink-50 to-blue-50 py-16 px-4 sm:px-6 lg:px-8" role="banner">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
+                Create Beautiful, Personalized <span class="text-pink-500">Wish Cards</span> in Seconds
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Use WishCraft's free online editor to customize premium templates, add photos and music, and generate shareable birthday and greeting cards that feel personal and professional.
+            </p>
+        </div>
+    </section>
+
+    <!-- Advertisement Section -->
+    <section class="py-8 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="flex justify-center">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8" aria-labelledby="templates-heading">
+        <div class="max-w-7xl mx-auto">
+            <header class="text-center mb-10">
+                <h2 id="templates-heading" class="text-3xl font-bold text-gray-900">Featured Birthday Card Templates</h2>
+                <p class="text-gray-600 mt-2">Browse curated, professionally designed templates ready for personalization — perfect for birthdays, anniversaries, and special occasions.</p>
+            </header>
+
+            <!-- Templates Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Template Cards -->
+                {% for template in templates %}
+                <a href="{% url 'view_template_page' template.id %}" class="block">
+                    <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden flex flex-col w-full">
+                        <div class="relative h-72 md:h-96 overflow-hidden">
+                            <img src="{{ template.image }}" alt="{{ template.name }}" title="{{ template.name }}" loading="lazy"
+                                class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            <div class="absolute top-3 right-3">
+                                <span
+                                    class="px-2 py-1 bg-pink-500 text-white text-sm font-medium rounded-full">Popular</span>
+                            </div>
+                        </div>
+                        <div class="p-4 flex-grow">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ template.name }}</h3>
+                            <p class="text-gray-600 text-sm">{{ template.desc }}</p>
+                        </div>
+                        <div class="px-4 pb-4">
+                            <button
+                                class="w-full py-2 text-sm bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg font-medium hover:from-pink-600 hover:to-purple-600 transition-colors">
+                                Customize Template
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="py-8 px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-100" aria-labelledby="features-heading">
+        <div class="max-w-7xl mx-auto">
+            <header class="text-center mb-10">
+                <h2 id="features-heading" class="text-3xl font-bold text-gray-900">Why Choose WishCraft Professional Card Maker?</h2>
+                <p class="text-gray-600 mt-2">We make creating beautiful professional wish cards and birthday greetings simple and
+                    enjoyable</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="text-center p-6">
+                    <div class="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Professional Online Card Maker</h3>
+                    <p class="text-gray-600">Create stunning professional birthday cards and wish cards in just a few clicks with
+                        our intuitive advanced online editor.</p>
+                </article>
+
+                <article class="text-center p-6">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Premium Card Templates</h3>
+                    <p class="text-gray-600">Choose from a wide variety of professionally designed premium birthday card and
+                        greeting card templates.</p>
+                </article>
+
+                <article class="text-center p-6">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">100% Free Professional Card Maker</h3>
+                    <p class="text-gray-600">Create and share your professional personalized wish cards and birthday greetings
+                        without any cost or hidden fees.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

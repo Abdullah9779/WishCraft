@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+
+{% block seo %}
+<!-- Primary Meta Tags -->
+<title>{{ template_id }} Template — Personalized Birthday Card | WishCraft</title>
+<meta name="title" content="{{ template_id }} Template — Personalized Birthday Card | WishCraft">
+<meta name="description"
+    content="Preview and customize the {{ template_id }} birthday card template. Use WishCraft's free editor to personalize this design and create a shareable birthday card.">
+<meta name="keywords"
+    content="{{ template_id }}, birthday card template, personalized card, greeting card template, free card maker">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="author" content="WishCraft">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="{{ request.url }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ request.url }}">
+<meta property="og:title" content="{{ template_id }} Template - Free Birthday Card Maker">
+<meta property="og:description"
+    content="Preview and customize the {{ template_id }} birthday card template. Create personalized wish cards with this beautiful design.">
+{% if template_pictures and template_pictures|length > 0 %}
+<meta property="og:image" content="{{ template_pictures.0 }}">
+{% else %}
+<meta property="og:image"
+    content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+{% endif %}
+<meta property="og:site_name" content="WishCraft">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ request.url }}">
+<meta property="twitter:title" content="{{ template_id }} Template - Free Birthday Card Maker">
+<meta property="twitter:description"
+    content="Preview and customize the {{ template_id }} birthday card template. Create personalized wish cards with this beautiful design.">
+{% if template_pictures and template_pictures|length > 0 %}
+<meta property="twitter:image" content="{{ template_pictures.0 }}">
+{% else %}
+<meta property="twitter:image"
+    content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
+{% endif %}
+
+<!-- Favicon -->
+<link rel="icon"
+    href="https://dotcoder.site/static/wishcraft/icon/wishcraft-favicon.png">
+<link rel="apple-touch-icon"
+    href="https://dotcoder.site/static/wishcraft/icon/wishcraft-192-logo.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "{{ template_id }} Birthday Card Template",
+  "description": "Preview and customize the {{ template_id }} birthday card template. Create personalized wish cards with this beautiful design.",
+  "url": "{{ request.url }}",
+  "creator": {
+    "@type": "Organization",
+    "name": "WishCraft"
+  },
+  "isPartOf": {
+    "@type": "WebApplication",
+    "name": "WishCraft",
+    "url": "{{ request.url_root }}"
+  },
+  {% if template_pictures and template_pictures|length > 0 %}
+  "image": [
+    {% for img in template_pictures %}
+    "{{ img }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ],
+  {% endif %}
+  "genre": "Birthday Card Template",
+  "keywords": "birthday card, wish card, greeting card, template, personalized card"
+}
+</script>
+{% endblock %}
+
+{% block body %}
+<main class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
+    <div class="container mx-auto px-4">
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-black mb-4">
+                {{ template_id }} Birthday Card Template Preview
+            </h1>
+            <p class="text-lg text-gray-700 mb-4">Customize this {{ template_id }} template to create a personalized wish card.</p>
+            <div class="inline-flex items-center bg-white rounded-full px-6 py-2 shadow-lg">
+                <span class="text-gray-500 text-sm font-medium">Template:</span>
+                <span class="ml-2 text-blue-600 font-bold">{{ template_id }}</span>
+            </div>
+        </header>
+
+        <section class="py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                        'format': 'iframe',
+                        'height': 90,
+                        'width': 728,
+                        'params': {}
+                    };
+                </script>
+                <script type="text/javascript"
+                    src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="max-w-4xl mx-auto">
+            <!-- Image Slider Section -->
+            <section class="bg-white rounded-2xl shadow-2xl p-8 mb-8" aria-labelledby="template-gallery">
+                <h2 id="template-gallery" class="sr-only">{{ template_id }} Template Gallery</h2>
+                <div class="relative max-w-3xl mx-auto">
+                    {% if template_pictures and template_pictures|length > 0 %}
+                    <!-- Slider Container: narrow centered mobile mockup -->
+                    <div class="overflow-hidden relative rounded-lg mx-auto w-44 sm:w-48 md:w-56 lg:w-64">
+                        <div id="slider" class="flex transition-transform duration-500">
+                            {% for img in template_pictures %}
+                            <img src="{{ img }}" alt="Preview image for {{ template_id }} template {{ forloop.counter }}" title="Preview {{ forloop.counter }}" loading="lazy" class="flex-shrink-0 w-full object-contain max-h-[70vh]">
+                            {% endfor %}
+                        </div>
+                    </div>
+
+
+                    <!-- Navigation Buttons -->
+                    <button id="prev" aria-label="Previous slide"
+                        class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <button id="next" aria-label="Next slide"
+                        class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+
+                    <!-- Slide Indicators -->
+                    <div class="flex justify-center mt-6 space-x-2" id="indicators">
+                        {% for img in template_pictures %}
+                        <button
+                            class="indicator w-3 h-3 rounded-full transition-all duration-200 {% if forloop.first %}bg-blue-600{% else %}bg-gray-300{% endif %}"
+                            data-slide="{{ forloop.counter0 }}"></button>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="text-center py-12">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Template Not Found</h3>
+                        <p class="text-gray-600 mb-4">We couldn't locate the {{ template_id }} template. Try browsing other designs.</p>
+                        <a href="{% url 'home_page' %}"
+                            class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition-colors">Browse All Templates</a>
+                    </div>
+                    {% endif %}
+                </div>
+        </div>
+
+        <section class="py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                        'format': 'iframe',
+                        'height': 90,
+                        'width': 728,
+                        'params': {}
+                    };
+                </script>
+                <script type="text/javascript"
+                    src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+            </div>
+        </section>
+
+        <!-- Action Section -->
+        {% if template_pictures and template_pictures|length > 0 %}
+        <section class="text-center" aria-labelledby="create-card">
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h2 id="create-card" class="text-2xl font-bold text-gray-800 mb-4">Ready to Create Your Professional {{ template_id }} Card?</h2>
+                <p class="text-gray-600 mb-6">Use this beautiful professional {{ template_id }} template to craft your perfect
+                    personalized birthday wish card</p>
+
+                <a href="{% url 'create_template_page' template_id %}" class="inline-block"
+                    aria-label="Start customizing {{ template_id }} template">
+                    <button type="button"
+                        class="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            Customize This Professional Template
+                        </span>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <section class="py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': '5f7f08c41ce8081a1187f4f6946985a3',
+                        'format': 'iframe',
+                        'height': 90,
+                        'width': 728,
+                        'params': {}
+                    };
+                </script>
+                <script type="text/javascript"
+                    src="//www.highperformanceformat.com/5f7f08c41ce8081a1187f4f6946985a3/invoke.js"></script>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+    </div>
+</main>
+
+<script>
+    (function () {
+        const slider = document.getElementById("slider");
+        if (!slider) return; // no slider present (no images)
+
+        const images = slider.getElementsByTagName("img");
+        if (!images || images.length === 0) return;
+
+        const indicators = document.querySelectorAll(".indicator");
+        let index = 0;
+        let autoSlideInterval;
+
+        function showSlide(i) {
+            if (i >= images.length) index = 0;
+            if (i < 0) index = images.length - 1;
+
+            slider.style.transform = `translateX(-${index * 100}%)`;
+
+            // Update indicators
+            indicators.forEach((indicator, idx) => {
+                indicator.classList.toggle("bg-blue-600", idx === index);
+                indicator.classList.toggle("bg-gray-300", idx !== index);
+            });
+        }
+
+        function nextSlide() {
+            index++;
+            showSlide(index);
+        }
+
+        function prevSlide() {
+            index--;
+            showSlide(index);
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Event listeners
+        const nextBtn = document.getElementById("next");
+        const prevBtn = document.getElementById("prev");
+        if (nextBtn) nextBtn.addEventListener("click", () => {
+            stopAutoSlide();
+            nextSlide();
+            startAutoSlide();
+        });
+
+        if (prevBtn) prevBtn.addEventListener("click", () => {
+            stopAutoSlide();
+            prevSlide();
+            startAutoSlide();
+        });
+
+        // Indicator click events
+        indicators.forEach((indicator, idx) => {
+            indicator.addEventListener("click", () => {
+                stopAutoSlide();
+                index = idx;
+                showSlide(index);
+                startAutoSlide();
+            });
+        });
+
+        // Pause auto-slide on hover
+        const sliderContainer = slider.parentElement;
+        if (sliderContainer) {
+            sliderContainer.addEventListener("mouseenter", stopAutoSlide);
+            sliderContainer.addEventListener("mouseleave", startAutoSlide);
+        }
+
+        // Start auto-slide
+        startAutoSlide();
+    })();
+</script>
+
+{% endblock %}
