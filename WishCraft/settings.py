@@ -31,9 +31,9 @@ ADMINS = [
 # -------------------------------------
 # SECURITY SETTINGS — PYTHONANYWHERE SAFE
 # -------------------------------------
-CSRF_COOKIE_SECURE = True              # Only over HTTPS
-SECURE_SSL_REDIRECT = True             # Force HTTPS
-SECURE_HSTS_SECONDS = 60 * 60 * 24 * 365 * 2         # 2 year HSTS
+CSRF_COOKIE_SECURE = False              # Only over HTTPS
+SECURE_SSL_REDIRECT = False             # Force HTTPS
+SECURE_HSTS_SECONDS = 0         # 2 year HSTS
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SECURE_HSTS_PRELOAD = False
 X_FRAME_OPTIONS = 'DENY'               # Prevent clickjacking
@@ -47,7 +47,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 365 * 2    # 2 year
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_SAVE_EVERY_REQUEST = True      # Refresh expiry on each request
-SESSION_COOKIE_SECURE = True           # Only over HTTPS
+SESSION_COOKIE_SECURE = False           # Only over HTTPS
 SESSION_COOKIE_HTTPONLY = True         # JS cannot access
 SESSION_COOKIE_SAMESITE = 'Lax'        # Protect against CSRF
 

@@ -9,13 +9,13 @@ import json
 
 # Create your views here.
 
-with open("/home/wishcraft/WishCraft/wishcraft-templates-data/templates.json", "r") as file:
+with open("wishcraft-templates-data/templates.json", "r") as file:
     templates_data = json.load(file)["templates"]
 
-with open("/home/wishcraft/WishCraft/wishcraft-templates-data/templates_pictures.json", "r") as file:
+with open("wishcraft-templates-data/templates_pictures.json", "r") as file:
     templates_pictures = json.load(file)["templates_pictures"]
 
-with open("/home/wishcraft/WishCraft/wishcraft-templates-data/songs.json", "r", encoding="utf-8") as file:
+with open("wishcraft-templates-data/songs.json", "r", encoding="utf-8") as file:
     songs = json.load(file)["songs"]
 
 

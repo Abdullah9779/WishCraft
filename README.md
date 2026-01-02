@@ -86,7 +86,7 @@ Follow these instructions to get a local copy of WishCraft up and running for de
     # --------------- Email Configurations ---------------
     EMAIL_HOST_USER = 'your-email-address@gmail.com'
     EMAIL_HOST_PASSWORD = 'your-email-password'
-    DEFAULT_FROM_EMAIL = 'Lexis Tools <your-email-address@gmail.com>'
+    DEFAULT_FROM_EMAIL = 'WishCraft <your-email-address@gmail.com>'
     MAIL_SEND_TO = 'your-second-email-address@gmail.com'
 
     # --------------- MySQL Configurations ---------------
