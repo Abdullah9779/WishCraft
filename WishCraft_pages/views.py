@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, FileResponse
 from django.core.signing import Signer
-
+from django.views.decorators.cache import cache_page
 from WishCraft_api.utils import get_upload_folder
 
 import os
@@ -21,11 +21,13 @@ with open("wishcraft-templates-data/songs.json", "r", encoding="utf-8") as file:
 
 # ========== Home Page ==========
 
+@cache_page(60 * 60 * 24)
 def home_page(request):
     return render(request, "home_page.html", {"templates": templates_data})
 
 # ========== View Template Pages ==========
 
+@cache_page(60 * 60 * 24)
 def view_template_page(request, template_id):
     if not template_id:
         return HttpResponse("Template ID is required!")
@@ -39,6 +41,7 @@ def view_template_page(request, template_id):
 
 # ========== Create Template Pages ==========
 
+@cache_page(60 * 60 * 24)
 def create_template_page(request, template_id):
     if not template_id:
         return HttpResponse("Template ID is required!")
@@ -97,28 +100,33 @@ def my_templates_page(request):
 
 # ========== About Page ==========
 
+@cache_page(60 * 60 * 24)
 def about_page(request):
     return render(request, "about_page.html")
 
 
 # ========== Contact Page ==========
 
+@cache_page(60 * 60 * 24)
 def contact_page(request):
     return render(request, "contact_page.html")
 
 
 # ========== Privacy Page ==========
 
+@cache_page(60 * 60 * 24)
 def privacy_page(request):
     return render(request, "privacy_policy.html")
 
 # ========== Install Page ==========
 
+@cache_page(60 * 60 * 24)
 def install_page(request):
     return render(request, "install_page.html")
 
 # ========== Blog Page ============
 
+@cache_page(60 * 60 * 24)
 def blog_page(request):
     return render(request, "blog_page.html")
 
