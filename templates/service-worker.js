@@ -1,71 +1,107 @@
-const CACHE_NAME = "wishcraft-v10";
+/* ============================================================
+   WishCraft – Production PWA Service Worker
+   Safe updates • SEO-friendly • Offline support • Scalable
+   ============================================================ */
 
-// Only cache real static files (HTML pages optional)
-const ASSETS = [
-  "/",
-  "/my-templates",
-  "/about",
-  "/contact",
-  "/privacy",
-  "/blog",
-  "/install"
+const VERSION = 'wishcraft-2.0.0';
+
+const STATIC_CACHE = `wishcraft-static-${VERSION}`;
+const RUNTIME_CACHE = `wishcraft-runtime-${VERSION}`;
+
+const PRECACHE_URLS = [
+  '/',
+  '/about',
+  '/contact',
+  '/privacy',
+  '/blog',
+  '/install',
 ];
 
-// Only allow http(s)
-const isHttp = (req) =>
-  req.url.startsWith("http://") || req.url.startsWith("https://");
-
-// INSTALL — Pre-cache assets
-self.addEventListener("install", (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(STATIC_CACHE).then(cache => cache.addAll(PRECACHE_URLS))
   );
   self.skipWaiting();
 });
 
-// ACTIVATE — Clear old caches
-self.addEventListener("activate", (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(key => !key.includes(VERSION))
+          .map(key => caches.delete(key))
+      )
     )
   );
+
   self.clients.claim();
+
+  self.clients.matchAll().then(clients => {
+    clients.forEach(client =>
+      client.postMessage({ type: 'WISHCRAFT_UPDATED' })
+    );
+  });
 });
 
-// FETCH — Network-first for HTML, Cache-first for everything else
-self.addEventListener("fetch", (event) => {
-  const req = event.request;
+self.addEventListener('fetch', event => {
+  const { request } = event;
+  const url = new URL(request.url);
 
-  if (!isHttp(req)) return; // Skip extension/websocket/etc
+  if (request.method !== 'GET' || url.origin !== location.origin) return;
 
-  // ✅ Network-first for page navigations
-  if (req.mode === "navigate") {
-    event.respondWith(
-      fetch(req)
-        .then((res) => {
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, res.clone()));
-          return res;
-        })
-        .catch(() => caches.match(req) || caches.match("/"))
-    );
+  if (url.pathname.startsWith('/api/')) {
+    event.respondWith(networkFirst(request));
     return;
   }
 
-  // ✅ Cache-first for static assets (CSS, JS, images)
-  event.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) return cached;
+  if (
+    url.pathname.endsWith('.js') ||
+    url.pathname.endsWith('.css')
+  ) {
+    event.respondWith(staleWhileRevalidate(request));
+    return;
+  }
 
-      return fetch(req)
-        .then((res) => {
-          if (res.status === 200 && isHttp(req)) {
-            const clone = res.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
-          }
-          return res;
-        })
-        .catch(() => cached); // last fallback
-    })
-  );
+  if (request.headers.get('accept')?.includes('text/html')) {
+    event.respondWith(networkFirst(request));
+    return;
+  }
+
+  event.respondWith(cacheFirst(request));
 });
+
+async function networkFirst(request) {
+  try {
+    const response = await fetch(request);
+    const cache = await caches.open(RUNTIME_CACHE);
+    cache.put(request, response.clone());
+    return response;
+  } catch {
+    return (
+      caches.match(request) ||
+      new Response('Offline', { status: 503 })
+    );
+  }
+}
+
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(RUNTIME_CACHE);
+  const cached = await cache.match(request);
+
+  const networkFetch = fetch(request).then(response => {
+    if (response && response.status === 200) {
+      cache.put(request, response.clone());
+    }
+    return response;
+  });
+
+  return cached || networkFetch;
+}
+
+async function cacheFirst(request) {
+  const cached = await caches.match(request);
+  return cached || fetch(request);
+}
+
+console.log('WishCraft Service Worker loaded');
