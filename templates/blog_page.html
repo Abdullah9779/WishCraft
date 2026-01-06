@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block seo %}
 <!-- Primary Meta Tags -->
@@ -32,6 +33,7 @@
 <meta property="twitter:image"
     content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
 
+<link rel="stylesheet" href="{% static 'css/blog-page.css' %}">
 <!-- Structured Data -->
 <script type="application/ld+json">
 {
@@ -50,17 +52,6 @@
   }
 }
 </script>
-{% endblock %}
-
-{% block css %}
-<style>
-    .blog-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .blog-card:hover {
-        transform: translateY(-2px);
-    }
-</style>
 {% endblock %}
 
 {% block body %}
