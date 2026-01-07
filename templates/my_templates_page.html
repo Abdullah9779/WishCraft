@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block seo %}
 <title>My Templates - WishCraft</title>
@@ -8,26 +9,7 @@
 <meta property="og:description" content="Manage and share your saved personalized wish card templates on WishCraft.">
 <meta property="og:image" content="https://dotcoder.site/static/wishcraft/icon/wishcraft-logo.png">
 <meta name="twitter:card" content="summary_large_image">
-{% endblock %}
-
-{% block css %}
-<style>
-    .card-hover {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card-hover:hover {
-        transform: translateY(-5px);
-    }
-
-    .delete-btn {
-        transition: all 0.3s ease;
-    }
-
-    .delete-btn:hover {
-        transform: scale(1.05);
-    }
-</style>
+<link rel="stylesheet" href="{% static 'css/my-templates-page.css' %}">
 {% endblock %}
 
 {% block body %}
